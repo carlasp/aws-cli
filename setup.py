@@ -23,23 +23,15 @@ def find_version(*file_paths):
     raise RuntimeError("Unable to find version string.")
 
 
-requires = ['botocore==1.12.173',
-            'colorama>=0.2.5,<=0.3.9',
-            'docutils>=0.10',
-            'rsa>=3.1.2,<=3.5.0',
-            's3transfer>=0.2.0,<0.3.0']
-
-
-if sys.version_info[:2] == (2, 6):
-    # For python2.6 we have to require argparse since it
-    # was not in stdlib until 2.7.
-    requires.append('argparse>=1.1')
-
-    # For Python 2.6, we have to require a different verion of PyYAML since the latest
-    # versions dropped support for Python 2.6.
-    requires.append('PyYAML>=3.10,<=3.13')
-else:
-    requires.append('PyYAML>=3.10,<=5.1')
+install_requires = [
+    'botocore==1.20.62',
+    'docutils>=0.10,<0.16',
+    's3transfer>=0.4.0,<0.5.0',
+    'PyYAML>=3.10,<5.5',
+    'colorama>=0.2.5,<0.4.4',
+    'rsa>=3.1.2,<=4.5.0; python_version=="2.7"',
+    'rsa>=3.1.2,<4.8; python_version>"2.7"',
+]
 
 
 setup_options = dict(
@@ -54,15 +46,13 @@ setup_options = dict(
              'bin/aws_bash_completer'],
     packages=find_packages(exclude=['tests*']),
     package_data={'awscli': ['data/*.json', 'examples/*/*.rst',
+                             'examples/*/*.txt', 'examples/*/*/*.txt',
                              'examples/*/*/*.rst', 'topics/*.rst',
                              'topics/*.json']},
-    install_requires=requires,
-    extras_require={
-        ':python_version=="2.6"': [
-            'argparse>=1.1',
-        ]
-    },
+    install_requires=install_requires,
+    extras_require={},
     license="Apache License 2.0",
+    python_requires=">= 2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*",
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
@@ -71,16 +61,14 @@ setup_options = dict(
         'License :: OSI Approved :: Apache Software License',
         'Programming Language :: Python',
         'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.3',
-        'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
     ],
 )
+
 
 if 'py2exe' in sys.argv:
     # This will actually give us a py2exe command.

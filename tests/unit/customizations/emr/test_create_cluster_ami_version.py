@@ -305,11 +305,13 @@ IMPALA_DEFAULT_STEP = {
 }
 
 CREATE_CLUSTER_RESULT = {
-    "JobFlowId": "j-XXXX"
+    "JobFlowId": "j-XXXX",
+    "ClusterArn": "arn:aws:elasticmapreduce:region:012345678910:cluster/j-XXXX"
 }
 
 CONSTRUCTED_RESULT = {
-    "ClusterId": "j-XXXX"
+    "ClusterId": "j-XXXX",
+    "ClusterArn": "arn:aws:elasticmapreduce:region:012345678910:cluster/j-XXXX"
 }
 
 DEFAULT_RESULT = \
@@ -1505,6 +1507,23 @@ class TestCreateCluster(BaseAWSCommandParamsTest):
                               'InstanceFleets':
                                                 CONSTANTS_FLEET.RES_INSTANCE_FLEETS_WITH_ON_DEMAND_MASTER_ONLY
                             },
+                'AmiVersion': '3.1.0',
+                'VisibleToAllUsers': True,
+                'Tags': []
+            }
+        self.assert_params_for_cmd(cmd, result)
+
+    def test_instance_fleets_with_on_demand_master_only_with_targeted_odcr(self):
+        cmd = (self.prefix + '--ami-version 3.1.0 --instance-fleets ' +
+               CONSTANTS_FLEET.INSTANCE_FLEETS_WITH_ON_DEMAND_MASTER_ONLY_WITH_TARGETED_ODCR)
+        result = \
+            {
+                'Name': DEFAULT_CLUSTER_NAME,
+                'Instances': {'KeepJobFlowAliveWhenNoSteps': True,
+                              'TerminationProtected': False,
+                              'InstanceFleets':
+                                  CONSTANTS_FLEET.RES_INSTANCE_FLEETS_WITH_ON_DEMAND_MASTER_ONLY_WITH_TARGETED_ODCR
+                              },
                 'AmiVersion': '3.1.0',
                 'VisibleToAllUsers': True,
                 'Tags': []

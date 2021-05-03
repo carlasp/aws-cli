@@ -58,6 +58,18 @@ ARGUMENT_RENAMES = {
     'apigatewayv2.update-api.version': 'api-version',
     'pinpoint.get-campaign-version.version': 'campaign-version',
     'pinpoint.get-segment-version.version': 'segment-version',
+    'pinpoint.delete-email-template.version': 'template-version',
+    'pinpoint.delete-push-template.version': 'template-version',
+    'pinpoint.delete-sms-template.version': 'template-version',
+    'pinpoint.delete-voice-template.version': 'template-version',
+    'pinpoint.get-email-template.version': 'template-version',
+    'pinpoint.get-push-template.version': 'template-version',
+    'pinpoint.get-sms-template.version': 'template-version',
+    'pinpoint.get-voice-template.version': 'template-version',
+    'pinpoint.update-email-template.version': 'template-version',
+    'pinpoint.update-push-template.version': 'template-version',
+    'pinpoint.update-sms-template.version': 'template-version',
+    'pinpoint.update-voice-template.version': 'template-version',
     'stepfunctions.send-task-success.output': 'task-output',
     'clouddirectory.publish-schema.version': 'schema-version',
     'mturk.list-qualification-types.query': 'types-query',
@@ -73,10 +85,22 @@ ARGUMENT_RENAMES = {
     'lex-models.delete-intent-version.version': 'intent-version',
     'lex-models.delete-slot-type-version.version': 'slot-type-version',
     'lex-models.get-export.version': 'resource-version',
+    'license-manager.get-grant.version': 'grant-version',
+    'license-manager.delete-grant.version': 'grant-version',
+    'license-manager.get-license.version': 'license-version',
     'mobile.create-project.region': 'project-region',
     'rekognition.create-stream-processor.output': 'stream-processor-output',
     'eks.create-cluster.version': 'kubernetes-version',
     'eks.update-cluster-version.version': 'kubernetes-version',
+    'eks.create-nodegroup.version': 'kubernetes-version',
+    'eks.update-nodegroup-version.version': 'kubernetes-version',
+    'schemas.*.version': 'schema-version',
+    'sagemaker.delete-image-version.version': 'version-number',
+    'sagemaker.describe-image-version.version': 'version-number',
+    'iotwireless.*.lo-ra-wan': 'lorawan',
+    'codepipeline.get-action-type.version': 'action-version',
+    'ecs.*.no-enable-execute-command': 'disable-execute-command',
+    'ecs.execute-command.no-interactive': 'non-interactive',
 }
 
 # Same format as ARGUMENT_RENAMES, but instead of renaming the arguments,
@@ -108,6 +132,13 @@ HIDDEN_ALIASES = {
     'lambda.publish-version.code-sha256': 'code-sha-256',
     'lightsail.import-key-pair.public-key-base64': 'public-key-base-64',
     'opsworks.register-volume.ec2-volume-id': 'ec-2-volume-id',
+    'mgn.*.replication-servers-security-groups-ids':
+        'replication-servers-security-groups-i-ds',
+    'mgn.*.source-server-ids': 'source-server-i-ds',
+    'mgn.*.replication-configuration-template-ids':
+        'replication-configuration-template-i-ds',
+    'elasticache.create-replication-group.preferred-cache-cluster-azs':
+        'preferred-cache-cluster-a-zs'
 }
 
 
